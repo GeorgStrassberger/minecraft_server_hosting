@@ -1,0 +1,21 @@
+services:
+  mc-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VERSION: ${VERSION}
+        SHA1: ${SHA1}
+        EULA: ${EULA}
+        MEMORY: ${MEMORY}
+    container_name: mc-server-java
+    ports:
+      - "8888:25565"
+    env_file:
+      - .env
+    volumes:
+      - mc-data:/data
+    restart: on-failure[5]
+
+volumes:
+  mc-data:

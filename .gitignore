@@ -1,0 +1,16 @@
+# Ignore sensitive and unnecessary files
+.env
+*.tmp
+data/*
+!data/README.md
+*.jar
+.DS_Store
+.idea/
+.vscode/
+
+# Log files
+*.log
+
+# htaccess
+/.htaccess
+
