@@ -1,5 +1,5 @@
 # Minimaler Java-Basiscontainer
-FROM openjdk:17-slim
+FROM eclipse-temurin:21-jdk-jammy
 
 # Build-Arguments of docker-compose.yml
 ARG VERSION
@@ -25,4 +25,4 @@ RUN apt-get update && apt-get install -y curl && \
 EXPOSE 25565
 
 # Start Minecraft-Server with RAM config
-CMD ["java", "-Xmx${MEMORY}", "-Xms${MEMORY}", "-jar", "server.jar", "nogui"]
+CMD sh -c "java -Xmx${MEMORY} -Xms${MEMORY} -jar server.jar nogui"
