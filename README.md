@@ -15,14 +15,12 @@ This project provides a complete Minecraft Java Edition server setup using Docke
   - [Environment Variables](#environment-variables)
   - [Projectstruktur](#projectstruktur)
   - [Testing](#testing)
-  - [Security Notes](#security-notes)
 
 ## Overview
 
 - `Dockerfile` – Builds the server image from an OpenJDK base
 - `docker-compose.yml` – Orchestrates the container with volumes, ports & build args
 - `.env` – Manages server configuration through environment variables
--
 
 ---
 
@@ -107,7 +105,6 @@ SHA1=6bce4ef400e4efaa63a13d5e6f6b500be969ef81
 | `SHA1`          | SHA1 hash of the server.jar from Mojang     |
 | `VERSION`       | Informational only (not directly used)      |
 | `MEMORY`        | RAM allocation for the server (e.g., 2G)    |
-| `MOTD`          | Message of the Day shown in the server list |
 | `MAX_PLAYERS`   | Max number of concurrent players            |
 | `RCON_PASSWORD` | Optional for remote console access          |
 
@@ -117,11 +114,12 @@ SHA1=6bce4ef400e4efaa63a13d5e6f6b500be969ef81
 
 ```text
 .
-├── Dockerfile              # Builds server image using Java & SHA1 jar
-├── docker-compose.yml      # Manages port, volume, and build settings
-├── .gitignore              # Excludes sensitive files like .env
-├── .env.example            # Configuration template file
-└── volume: mc-data         # Stores world data and server properties
+├── Dockerfile                      # Builds server image using Java & SHA1 jar
+├── docker-compose.yml              # Manages port, volume, and build settings
+├── .gitignore                      # Excludes sensitive files like .env
+├── .env.example                    # Configuration template file
+├── Minecraft_Server_Checkliste     # DA Checklist
+└── README.md                       # Readme file
 ```
 
 ---
@@ -136,16 +134,16 @@ To verify the setup:
 python3 -m pip install mcstatus
 mcstatus YOUR_SERVER_IP:8888 status
 ```
+Example output:
+```bah
+(minecraft-venv) PS C:\DEVELOPMENT\minecraft-server-status> python -m mcstatus localhost:8888 status
+version: Java 1.21.8 (protocol 772)
+motd: A Minecraft Server
+players: 0/20 No players online
+ping: 51.56 ms
+```
 
 3. Restart the server and verify world data persists
 4. Stop the container and confirm it restarts automatically
-
----
-
-## Security Notes
-
-- Do not store passwords, tokens, or IP addresses in the repository
-- Ensure .env is listed in .gitignore
-- Use .env.example as a safe, shareable config template
 
 ---
