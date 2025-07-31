@@ -126,7 +126,7 @@ SHA1=6bce4ef400e4efaa63a13d5e6f6b500be969ef81
 
 ## Environment Variables
 
-| Variable        | Beschreibung                                |
+| Variable        | Description                                |
 | --------------- | ------------------------------------------- |
 | `EULA`          | Must be set to TRUE to accept the EULA      |
 | `SHA1`          | SHA1 hash of the server.jar from Mojang     |
@@ -135,6 +135,10 @@ SHA1=6bce4ef400e4efaa63a13d5e6f6b500be969ef81
 | `MOTD`          | Message of the Day                          |
 | `MAX_PLAYERS`   | Max number of concurrent players            |
 | `RCON_PASSWORD` | Optional for remote console access          |
+
+> **Hint:**
+> If you want to specify additional properties, you can find a list of all properties under [www.minecraftinfo.de](https://www.minecraftinfo.de/wiki/minecraft-server-server-properties-erklaert/).
+Add it to the `.env` file. Then declare the `ARG` in the Dockerfile and initialize the `ENV` variable with the key from the `.env` file. Finally, adjust the `CMD` command with `“echo ‘mc_propertiename=${ENV_NAME}’ >> server.properties && \”`. This will overwrite the default value.
 
 ---
 
