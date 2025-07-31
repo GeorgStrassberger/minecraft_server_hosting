@@ -32,6 +32,6 @@ EXPOSE 25565
 
 # Start Minecraft-Server with RAM config and additional properties.
 CMD sh -c "echo 'max-players=${MAX_PLAYERS}' >> server.properties && \
-    echo "motd='${MOTD}'"" >> server.properties && \
+    echo "motd='${MOTD}'" >> server.properties && \
     echo 'rcon.password=${RCON_PASSWORD}' >> server.properties && \
     java -Xmx${MEMORY} -Xms${MEMORY} -jar server.jar nogui"
